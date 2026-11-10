@@ -1,0 +1,359 @@
+/* ==========================================================================
+   VARIABLES GLOBALES & PALETA DE COLORES
+   ========================================================================== */
+:root {
+  /* Colores base: Azul Oscuro, Blanco y Turquesa */
+  --bg-main: #0b132b;          /* Azul muy oscuro para el fondo general */
+  --card-bg: #1c2541;          /* Azul marino profundo para la tarjeta */
+  --card-border: #2e3b5e;      /* Borde sutil */
+  --text-primary: #ffffff;     /* Blanco puro */
+  --text-secondary: #97a6c4;   /* Azul claro desaturado para textos secundarios */
+  --primary-accent: #00b4d8;   /* Turquesa brillante */
+  --primary-hover: #90e0ef;    /* Turquesa claro para hover */
+  --focus-ring: rgba(0, 180, 216, 0.4);
+  
+  /* Estados de validación */
+  --error-color: #ff4d6d;
+  --error-bg: rgba(255, 77, 109, 0.1);
+  --success-color: #38b000;
+  --success-bg: rgba(56, 176, 0, 0.12);
+
+  /* Estilo y Radio */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --transition-fast: 0.2s ease;
+  --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Base Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Contenedor Principal (Flexbox) */
+.login-wrapper {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Tarjeta de Login */
+.login-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}
+
+/* Header de la tarjeta */
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 180, 216, 0.1);
+  color: var(--primary-accent);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.login-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Formulario */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.label-row label {
+  margin-bottom: 0;
+}
+
+.forgot-password-link {
+  font-size: 0.8rem;
+  color: var(--primary-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.forgot-password-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Contenedores e Inputs */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  background-color: rgba(11, 19, 43, 0.6);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+input::placeholder {
+  color: rgba(151, 166, 196, 0.5);
+}
+
+/* Estados de Foco */
+input:focus {
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+.input-container:focus-within .input-icon {
+  color: var(--primary-accent);
+}
+
+/* Estado de Error en Inputs */
+.input-group-error input {
+  border-color: var(--error-color) !important;
+}
+
+.input-group-error .input-icon {
+  color: var(--error-color) !important;
+}
+
+.error-message {
+  font-size: 0.8rem;
+  color: var(--error-color);
+  margin-top: 0.4rem;
+  min-height: 1.2rem;
+  display: block;
+}
+
+/* Botón Mostrar/Ocultar Contraseña */
+.toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color var(--transition-fast);
+}
+
+.toggle-password-btn:hover {
+  color: var(--primary-accent);
+}
+
+.toggle-password-btn:focus-visible {
+  outline: 2px solid var(--primary-accent);
+}
+
+/* Checkbox Personalizado */
+.form-options {
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox {
+  height: 18px;
+  width: 18px;
+  background-color: rgba(11, 19, 43, 0.6);
+  border: 1.5px solid var(--card-border);
+  border-radius: 4px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.checkbox-container:hover input ~ .custom-checkbox {
+  border-color: var(--primary-accent);
+}
+
+.checkbox-container input:checked ~ .custom-checkbox {
+  background-color: var(--primary-accent);
+  border-color: var(--primary-accent);
+}
+
+.custom-checkbox::after {
+  content: "";
+  display: none;
+  width: 5px;
+  height: 9px;
+  border: solid #0b132b;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .custom-checkbox::after {
+  display: block;
+}
+
+.checkbox-container input:focus-visible ~ .custom-checkbox {
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.checkbox-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Botón Principal */
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--primary-accent);
+  color: #0b132b;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 180, 216, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+/* Alertas Globales */
+.alert {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.alert.hidden {
+  display: none;
+}
+
+.alert-error {
+  background-color: var(--error-bg);
+  color: var(--error-color);
+  border: 1px solid rgba(255, 77, 109, 0.3);
+}
+
+.alert-success {
+  background-color: var(--success-bg);
+  color: #52b788;
+  border: 1px solid rgba(56, 176, 0, 0.3);
+}
+
+/* Pie de tarjeta / Aviso Didáctico */
+.demo-notice {
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.demo-notice code {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--primary-accent);
+}
+
+/* Adaptabilidad Responsiva */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.75rem 1.25rem;
+  }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión | Sistema Seguro</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Tipografía moderna Inter desde CDN público -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Contenedor principal centrado -->
+  <main class="login-wrapper">
+    <section class="login-card" aria-labelledby="login-title">
+      
+      <!-- Encabezado de la interfaz -->
+      <header class="login-header">
+        <div class="brand-logo" aria-hidden="true">
+          <!-- Icono SVG de Escudo/Seguridad -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <h1 id="login-title">Bienvenido</h1>
+        <p class="subtitle">Ingresa tus credenciales para acceder a la plataforma</p>
+      </header>
+
+      <!-- Mensaje de estado global (alertas de éxito/error de autenticación) -->
+      <div id="global-alert" class="alert hidden" role="alert" aria-live="polite"></div>
+
+      <!-- Formulario de Inicio de Sesión -->
+      <form id="login-form" novalidate>
+        
+        <!-- Campo: Correo Electrónico -->
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <div class="input-container">
+            <!-- Icono de usuario/correo -->
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="nombre@ejemplo.com"
+              autocomplete="email"
+              aria-describedby="email-error"
+            />
+          </div>
+          <span id="email-error" class="error-message" aria-live="polite"></span>
+        </div>
+
+        <!-- Campo: Contraseña -->
+        <div class="form-group">
+          <div class="label-row">
+            <label for="password">Contraseña</label>
+            <a href="#" class="forgot-password-link" id="forgot-password">¿Olvidaste tu contraseña?</a>
+          </div>
+          <div class="input-container">
+            <!-- Icono de cerrojo/seguridad -->
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="••••••••"
+              autocomplete="current-password"
+              aria-describedby="password-error"
+            />
+            <!-- Botón para alternar visibilidad de contraseña -->
+            <button 
+              type="button" 
+              id="toggle-password" 
+              class="toggle-password-btn" 
+              aria-label="Mostrar contraseña"
+              title="Mostrar u ocultar contraseña"
+            >
+              <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <span id="password-error" class="error-message" aria-live="polite"></span>
+        </div>
+
+        <!-- Opción: Recordar correo -->
+        <div class="form-options">
+          <label class="checkbox-container">
+            <input type="checkbox" id="remember-me" name="remember-me" />
+            <span class="custom-checkbox"></span>
+            <span class="checkbox-label">Recordar mi correo</span>
+          </label>
+        </div>
+
+        <!-- Botón Principal -->
+        <button type="submit" id="submit-btn" class="btn-primary">
+          <span>Iniciar sesión</span>
+        </button>
+      </form>
+
+      <!-- Nota didáctica/académica -->
+      <footer class="demo-notice">
+        <p><strong>Nota didáctica:</strong> Demo para pruebas: <code>demo@ejemplo.com</code> / <code>Demo1234!</code></p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
